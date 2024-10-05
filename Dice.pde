@@ -6,20 +6,23 @@ void setup()
 
 void draw()
 {
+    int sum = 0;
     //your code here
     background(251, 241, 199);
     for (int y=0; y<3; y++) {
         for (int x=0; x<3; x++) {
             foo = new Die(x*125+50, y*125+50);
-            foo.roll();
+            sum += foo.roll();
             foo.show();
         }
     }
+    text("Sum: " + sum, 20, 440);
 }
 
 void mousePressed()
 {
     redraw();
+    int sum = 0;
 }
 
 class Die //models one single dice cube
@@ -43,10 +46,11 @@ class Die //models one single dice cube
         myY = y;
     }
 
-    void roll()
+    int roll()
     {
         //your code here
         face = (int)(Math.random()*6);
+        return(face+1);
     }
 
     void show()
